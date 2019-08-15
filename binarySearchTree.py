@@ -49,7 +49,7 @@ class BinarySearchTree:
                 del node
                 return None
 
-            if not self.leftChild:
+
 
     def getminValue(self):
         if self.root:
