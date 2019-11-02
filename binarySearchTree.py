@@ -2,8 +2,8 @@ class Node(object):
 
     def __init__(self, data):
         self.data = data
-        self.leftChild = None
-        self.rightChild = None
+        self.left_child = None
+        self.right_child = None
 
 
 class BinarySearchTree:
@@ -15,33 +15,33 @@ class BinarySearchTree:
         if not self.root:
             self.root = Node(data)
         else:
-            self.insertNode(data, self.root)
+            self.insert_node(data, self.root)
 
-    def insertNode(self, data, node):
+    def insert_node(self, data, node):
         if data < node.data:
             if node.leftChild:
-                self.insertNode(data, node.leftChild)
+                self.insert_node(data, node.leftChild)
             else:
                 node.leftChild = Node(data)
 
         else:
             if node.rightChild:
-                self.insertNode(data, node.rightChild)
+                self.insert_node(data, node.rightChild)
             else:
                 node.rightChild = Node(data)
 
     def remove(self, data):
         if self.root:
-            self.root = self.removeNode(data, self.root)
+            self.root = self.remove_node(data, self.root)
 
-    def removeNode(self, data, node):
+    def remove_node(self, data, node):
         if not node:
             return node
 
         if data < node.data:
-            node.leftChild = self.removeNode(data, node.leftChild)
+            node.leftChild = self.remove_node(data, node.leftChild)
         elif data > node.data:
-            node.rightChild = self.removeNode(data, node.rightChild)
+            node.rightChild = self.remove_node(data, node.rightChild)
         else:
 
             if not node.leftChild and not node.rightChild:
@@ -49,40 +49,38 @@ class BinarySearchTree:
                 del node
                 return None
 
-
-
-    def getminValue(self):
+    def get_min_value(self):
         if self.root:
-            return self.getMin(self.root)
+            return self.get_min(self.root)
 
-    def getMin(self, node):
+    def get_min(self, node):
         if node.leftChild:
-            return self.getMin(node.leftChild)
+            return self.get_min(node.leftChild)
 
         return node.data
 
-    def getMaxValue(self):
+    def get_max_value(self):
         if self.root:
-            return self.getMax(self.root)
+            return self.get_max(self.root)
 
-    def getMax(self, node):
+    def get_max(self, node):
         if node.rightChild:
-            return self.getMax(node.rightChild)
+            return self.get_max(node.rightChild)
 
         return node.data
 
     def traverse(self):
         if self.root:
-            self.traverseInOrder(self.root)
+            self.traverse_in_order(self.root)
 
-    def traverseInOrder(self, node):
+    def traverse_in_order(self, node):
         if node.leftChild:
-            self.traverseInOrder(node.leftChild)
+            self.traverse_in_order(node.leftChild)
 
         print("%s " % node.data)
 
         if node.rightChild:
-            self.traverseInOrder(node.rightChild)
+            self.traverse_in_order(node.rightChild)
 
 
 bst = BinarySearchTree()
